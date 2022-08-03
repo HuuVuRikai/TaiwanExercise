@@ -1,15 +1,11 @@
 package com.rikai.taiwanexercise.view_model
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rikai.taiwanexercise.models.Profile
-import com.rikai.taiwanexercise.models.User
 import com.rikai.taiwanexercise.repositories.AppRepositoryImpl
-import com.rikai.taiwanexercise.utils.AppUtils
 import com.rikai.taiwanexercise.utils.UseCaseResult
-import com.rikai.taiwanexercise.view.DetailActivity
 import kotlinx.coroutines.*
 import java.io.IOException
 import kotlin.coroutines.CoroutineContext

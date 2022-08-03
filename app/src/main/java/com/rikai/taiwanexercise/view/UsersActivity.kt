@@ -79,11 +79,6 @@ class UsersActivity : AppCompatActivity() {
                 binding.progress.visibility = View.INVISIBLE
             }
         })
-        /*viewModel.users.observe(this, Observer<List<User>> {
-            it?.apply {
-                userAdapter.users = it
-            }
-        })*/
     }
 
     companion object {
