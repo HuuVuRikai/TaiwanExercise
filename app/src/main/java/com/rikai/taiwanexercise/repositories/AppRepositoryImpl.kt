@@ -14,6 +14,20 @@ class AppRepositoryImpl(
     private val appService: AppService,
     private val appDatabase: AppDatabase,
 ) : AppRepository {
+    override suspend fun getUsersPagination(startPage: String, numPage: String): UseCaseResult<List<User>> {
+        return try {
+            val users = withContext(Dispatchers.IO) {
+                appService.callUsersPaginationAsync(startPage, numPage).await()
+            }
+            withContext(Dispatchers.IO) {
+                if(users.isNotEmpty()) insertAll(users)
+            }
+            UseCaseResult.Success(users)
+        } catch (ex: Throwable) {
+            UseCaseResult.Error(ex.message ?: "")
+        }
+    }
+
     override suspend fun getUsers(): UseCaseResult<List<User>> {
         return try {
             val users = withContext(Dispatchers.IO) {

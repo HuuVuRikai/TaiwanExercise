@@ -24,5 +24,14 @@
             android:layout_height="match_parent"
             tools:listitem="@layout/activity_users_item"/>
 
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="top"
+            android:visibility="invisible"/>
+
     </FrameLayout>
 </layout>

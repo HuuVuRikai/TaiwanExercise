@@ -9,8 +9,15 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface AppService {
+    @GET("users")
+    fun callUsersPaginationAsync(
+        @Query("since") startPage: String,
+        @Query("per_page") numPage: String,
+    ): Deferred<List<User>>
+
     @GET("users")
     fun callUsersAsync(): Deferred<List<User>>
 

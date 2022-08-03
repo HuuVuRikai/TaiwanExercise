@@ -6,6 +6,7 @@ import com.rikai.taiwanexercise.models.User
 import com.rikai.taiwanexercise.utils.UseCaseResult
 
 interface AppRepository {
+    suspend fun getUsersPagination(startPage: String, numPage: String): UseCaseResult<List<User>>
     suspend fun getUsers(): UseCaseResult<List<User>>
     suspend fun get(login: String): UseCaseResult<Profile>
     suspend fun clear()

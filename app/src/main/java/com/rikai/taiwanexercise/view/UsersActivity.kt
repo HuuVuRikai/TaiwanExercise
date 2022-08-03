@@ -5,9 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.rikai.taiwanexercise.BaseApp.Companion.baseApp
 import com.rikai.taiwanexercise.R
@@ -40,6 +42,15 @@ class UsersActivity : AppCompatActivity() {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(this@UsersActivity)
         }
+        binding.usersRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (!recyclerView.canScrollVertically(1) ) {
+                    if(viewModel.showLoading.value == false){
+                        viewModel.getUsersPagination()
+                    }
+                }
+            }
+        })
     }
 
     private fun initializeView() {
@@ -56,13 +67,23 @@ class UsersActivity : AppCompatActivity() {
 
     private fun initializeViewModel() {
         viewModel.showResult.observe(this, Observer {
-            if(it) Snackbar.make(binding.root, "Success", Snackbar.LENGTH_LONG).show()
+            if(it) {
+//                Snackbar.make(binding.root, "Success", Snackbar.LENGTH_LONG).show()
+                userAdapter.users = viewModel.users
+            }
         })
-        viewModel.users.observe(this, Observer<List<User>> {
+        viewModel.showLoading.observe(this, Observer {
+            if(it) {
+                binding.progress.visibility = View.VISIBLE
+            }else {
+                binding.progress.visibility = View.INVISIBLE
+            }
+        })
+        /*viewModel.users.observe(this, Observer<List<User>> {
             it?.apply {
                 userAdapter.users = it
             }
-        })
+        })*/
     }
 
     companion object {
