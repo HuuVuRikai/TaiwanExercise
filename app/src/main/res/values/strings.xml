@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TaiwanExercise</string>
+    <string name="staff">STAFF</string>
+    <string name="admin">ADMIN</string>
+</resources>

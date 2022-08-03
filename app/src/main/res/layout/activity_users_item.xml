@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="5dp"
+    android:layout_margin="@dimen/appPadding">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/appPadding"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:cardCornerRadius="@dimen/circleAvatarItem"
+            app:cardElevation="0dp"
+            android:layout_marginRight="@dimen/appPadding">
+            <ImageView
+                android:id="@+id/avatar_img"
+                android:layout_width="@dimen/sizeAvatarItem"
+                android:layout_height="@dimen/sizeAvatarItem"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/login_tv"
+            style="@style/AppTextItemStyle"/>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
